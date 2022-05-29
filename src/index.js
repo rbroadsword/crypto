@@ -3,8 +3,29 @@ import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
+import Crypto from './js/crypto.js'; 
 
-const url = `https://api.nomics.com/v1/currencies/ticker?key=${process.env.API_KEY}&ids= 5DAI,BTC,UNI,ETH,ZRX,BAT,ADA,HEX,LTC,1INCH,DOGE,XRP,XLM,USDT,USDC&currency=EUR&interval=1d,7d,30d,365d,ytd&per-page=100&page=1`
+function getElements(response) {
+  // console.log(response[0].id); 
+  // console.log(response[0].name);
+  // console.log(response[0].price);
+  console.log("line 12" , response, "end of error"); 
+  if (response instanceof Error === false) {
+    //console.log("line 14" + response); 
+    $('.showBTC').text(`The price of ${response[0].id} is currently ${response[0].price}`);
+  } else {
+    //console.log(response); 
+    $('.showErrors').text(`there was an error: ${response.message}`); 
+
+  }
+}
+
 $(document).ready(function() {
-
+  $('#crypto').click(function() {
+    console.log(Crypto.getCrypto()); 
+    Crypto.getCrypto()
+      .then(function(response) {
+        getElements(response);
+      }); 
+  }); 
 }); 

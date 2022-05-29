@@ -1,3 +1,25 @@
 body {
   background-color: hotpink;
 }
+
+.start {
+  padding: 3rem;
+  margin: 1.5rem;
+}
+#info {
+  background: white;
+  width: 25rem;
+  height: 5rem;
+  margin: 1rem;
+  border: solid .25rem;
+  text-align: center;
+}
+#error {
+  background: white;
+  width: 25rem;
+  height: 5rem;
+  margin: 1rem;
+  border: solid .25rem;
+  text-align: center;
+  font-style: italic;
+}
