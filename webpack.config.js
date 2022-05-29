@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const Dotenv = require('dotenv-webpack'); 
 
 module.exports = {
   entry: './src/index.js',
@@ -18,7 +19,8 @@ module.exports = {
       title: 'template',      // 
       template: './src/index.html',
       inject: 'body'
-    })
+    }), 
+    new Dotenv()
   ],
   module: {
     rules: [
@@ -29,7 +31,8 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: '[name].[ext]',
-              outputPath: 'assets/img/'
+              outputPath: 'assets/img/', 
+              esModule: false
             }
           }
         ]
